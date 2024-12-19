@@ -112,7 +112,10 @@ module.exports = {
     'no-mixed-spaces-and-tabs': disabled,
     'no-multi-spaces': default_level,
     'no-multi-str': default_level,
-    'no-multiple-empty-lines': [default_level, { max: 1, maxEOF: 0, maxBOF: 0 }],
+    'no-multiple-empty-lines': [
+      default_level,
+      { max: 1, maxEOF: 0, maxBOF: 0 },
+    ],
     'no-native-reassign': default_level,
     'no-negated-in-lhs': default_level,
     'no-new': default_level,
@@ -148,7 +151,10 @@ module.exports = {
     'no-whitespace-before-property': default_level,
     'object-curly-newline': disabled,
     'object-curly-spacing': [default_level, 'always'],
-    'object-property-newline': [default_level, { allowMultiplePropertiesPerLine: true }],
+    'object-property-newline': [
+      default_level,
+      { allowMultiplePropertiesPerLine: true },
+    ],
     'prefer-const': default_level,
     'prefer-rest-params': default_level,
     'prefer-spread': default_level,

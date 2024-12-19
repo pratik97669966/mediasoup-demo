@@ -21,6 +21,7 @@ module.exports =
 		// NOTE: Don't change listenPort (client app assumes 4443).
 		listenPort : process.env.PROTOO_LISTEN_PORT || 4443,
 		// NOTE: Set your own valid certificate files.
+		// (optional) if tls is not set, it will use http instead
 		tls        :
 		{
 			cert : process.env.HTTPS_CERT_FULLCHAIN || `${__dirname}/certs/fullchain.pem`,

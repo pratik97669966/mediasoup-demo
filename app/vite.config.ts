@@ -2,15 +2,25 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 // try to get host domain from server/config.js if any
+// also get https config
 import Module from 'node:module'
+import path from 'node:path'
+import fs from 'node:fs'
+import url from 'node:url'
 const require = Module.createRequire(import.meta.url)
 let host = process.env.DOMAIN || 'localhost'
+let cert: Buffer<ArrayBufferLike> | undefined = undefined
+let key: Buffer<ArrayBufferLike> | undefined = undefined
 try {
-  host = require('../server/config').domain || host
-} catch(err) {
+  const c = require('../server/config')
+  host = c.domain || host
+  cert = readTls(c.https.tls?.cert)
+  key = readTls(c.https.tls?.key)
+} catch (err) {
   // ignore file not found
 }
 const port = Number(process.env.VITE_LISTEN_PORT) || 3000
+const https = cert && key ? { cert, key } : undefined
 
 export default defineConfig({
   plugins: [react()],
@@ -20,6 +30,7 @@ export default defineConfig({
   server: {
     host,
     port,
+    https,
   },
 })
 
@@ -103,6 +114,22 @@ async function runDev() {
 }
 
 function open(query: string) {
-  const url = `http://${host}:${port}/?${query}`
+  const protocol = https ? 'https' : 'http'
+  const url = `${protocol}://${host}:${port}/?${query}`
   openBrowser(url)
+}
+
+function readTls(v: string) {
+  if (!v) {
+    return
+  }
+  if (!path.isAbsolute(v)) {
+    const dir = path.dirname(url.fileURLToPath(import.meta.url))
+    v = path.join(dir, '../server', v)
+  }
+  try {
+    return fs.readFileSync(v)
+  } catch (err) {
+    // ignore file not found
+  }
 }
