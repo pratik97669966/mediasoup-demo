@@ -12,6 +12,7 @@ console.log('config.js:\n%s', JSON.stringify(config, null, '  '));
 
 const fs = require('fs');
 const https = require('https');
+const http = require('http');
 const url = require('url');
 const protoo = require('protoo-server');
 const mediasoup = require('mediasoup');
@@ -260,7 +261,7 @@ async function createExpressApp()
 						broadcasterId,
 						type,
 						rtcpMux,
-						comedia, 
+						comedia,
 						sctpCapabilities
 					});
 
@@ -390,7 +391,7 @@ async function createExpressApp()
 				next(error);
 			}
 		});
-	
+
 	/**
 	 * POST API to create a mediasoup DataProducer associated to a Broadcaster.
 	 * The exact Transport in which the DataProducer must be created is signaled in
@@ -453,13 +454,17 @@ async function runHttpsServer()
 	logger.info('running an HTTPS server...');
 
 	// HTTPS server for the protoo WebSocket server.
-	const tls =
+	const tls = config.https.tls &&
 	{
 		cert : fs.readFileSync(config.https.tls.cert),
 		key  : fs.readFileSync(config.https.tls.key)
 	};
+	if (!tls)
+	{
+		logger.info('no tls provided in config, fallback to HTTP...');
+	}
 
-	httpsServer = https.createServer(tls, expressApp);
+	httpsServer = tls ? https.createServer(tls, expressApp) : http.createServer(expressApp);
 
 	await new Promise((resolve) =>
 	{

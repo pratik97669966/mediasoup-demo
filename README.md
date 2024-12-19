@@ -70,10 +70,7 @@ $ cp config.example.js config.js
 
 ```bash
 $ cd app
-# For node 16
 $ npm install
-# For node 18 or higher, use legacy peer dependencies
-$ npm install --legacy-peer-deps
 ```
 
 
@@ -100,17 +97,13 @@ If you configured a self-signed tls certificate, and receive wss: connection err
 
 ## Deploy it in a server
 
-* Globally install `gulp-cli` NPM module (may need `sudo`):
-
-```bash
-$ npm install -g gulp-cli
-```
-
 * Build the production ready browser application:
 
 ```bash
 $ cd app
-$ gulp dist
+$ npm run build
+$ rm -rf ../server/public
+$ mv dist ../server/public
 ```
 
 * Upload the entire `server` folder to your server and make your web server (Apache, Nginx, etc) expose the `server/public` folder.
