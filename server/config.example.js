@@ -12,6 +12,8 @@ const os = require('os');
 
 module.exports =
 {
+	// Listening hostname for browser app Vite development server.
+	domain : process.env.DOMAIN || 'localhost',
 	// Signaling settings (protoo WebSocket server and HTTP API server).
 	https  :
 	{

@@ -1,7 +1,16 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-const port = 3000
+// try to get host domain from server/config.js if any
+import Module from 'node:module'
+const require = Module.createRequire(import.meta.url)
+let host = process.env.DOMAIN || 'localhost'
+try {
+  host = require('../server/config').domain || host
+} catch(err) {
+  // ignore file not found
+}
+const port = Number(process.env.VITE_LISTEN_PORT) || 3000
 
 export default defineConfig({
   plugins: [react()],
@@ -9,6 +18,7 @@ export default defineConfig({
     chunkSizeWarningLimit: Infinity,
   },
   server: {
+    host,
     port,
   },
 })
@@ -25,7 +35,11 @@ async function runDev() {
     return
   }
 
-  await waitPort({ port, output: 'silent' })
+  await waitPort({
+    host,
+    port,
+    output: 'silent',
+  })
 
   const default_ = {
     roomId: 'dev',
@@ -89,6 +103,6 @@ async function runDev() {
 }
 
 function open(query: string) {
-  const url = `http://localhost:${port}/?${query}`
+  const url = `http://${host}:${port}/?${query}`
   openBrowser(url)
 }
