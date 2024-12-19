@@ -1,3 +1,6 @@
+@import './nib-reset';
+@include global-reset();
+
 @import './variables';
 @import './mixins';
 @import './fonts';
