@@ -4,7 +4,6 @@
 ## ENV Variables
 
 * [DEBUG](#debug)
-* [DOMAIN](#domain)
 * [PROTOO_LISTEN_PORT](#protoo_listen_port)
 * [MEDIASOUP_LISTEN_IP](#mediasoup_listen_ip)
 * [MEDIASOUP_ANNOUNCED_IP](#mediasoup_announced_ip)
@@ -22,16 +21,6 @@ Example: "mediasoup:INFO* *WARN* *ERROR*"
 
 * Optional
 * Valid values: Check `debug` module manual
-* Default: ""
-
-### `DOMAIN`
-
-The service domain.
-
-Example: "local.me.dev"
-
-* Optional
-* Valid values: Domain
 * Default: ""
 
 ### `PROTOO_LISTEN_PORT`

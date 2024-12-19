@@ -23,7 +23,6 @@ docker run \
 	--init \
 	-e DEBUG \
 	-e INTERACTIVE \
-	-e DOMAIN \
 	-e PROTOO_LISTEN_PORT \
 	-e HTTPS_CERT_FULLCHAIN \
 	-e HTTPS_CERT_PRIVKEY \
