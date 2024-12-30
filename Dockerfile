@@ -1,18 +1,24 @@
-FROM node:12
+# Use a lightweight Node.js image 
+FROM node:20-alpine
 
-WORKDIR /app
-RUN apt-get update
-COPY package-lock.json .
+# Set working directory
+WORKDIR /src
+
+# Copy package.json and .env dependencies
 COPY package.json .
-RUN npm install
+COPY .env.template ./.env
 
-COPY src src
-COPY ssl ssl
+# Install necessary system packages and dependencies
+RUN apk add --no-cache \
+    bash \
+    vim \
+    && npm install \
+    && npm cache clean --force \
+    && rm -rf /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Copy the application code
+COPY app app
 COPY public public
 
-EXPOSE 3016
-EXPOSE 10000-10100
-
-RUN npm i -g nodemon
-
-CMD npm start
+# Set default command to start the application
+CMD ["npm", "start"]
