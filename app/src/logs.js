@@ -4,8 +4,8 @@ const util = require('util');
 
 const colors = require('colors');
 
-const LOGS_DEBUG = process.env.LOGS_DEBUG 
-const LOGS_COLORS = process.env.LOGS_COLORS
+const LOGS_DEBUG = process.env.LOGS_DEBUG ? process.env.LOGS_DEBUG === 'true' : true;
+const LOGS_COLORS = process.env.LOGS_COLORS ? process.env.LOGS_COLORS === 'true' : true;
 
 console.log('Logs', {
     colors: LOGS_COLORS,

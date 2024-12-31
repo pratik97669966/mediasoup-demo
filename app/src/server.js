@@ -24,7 +24,7 @@ const Logs = require('./logs');
 const log = new Logs('server');
 
 // Custom Brand and buttons
-const config = safeRequire('./config.template.js');
+const config = safeRequire('./config');
 
 // Email alerts and notifications
 const nodemailer = require('./lib/nodemailer');
