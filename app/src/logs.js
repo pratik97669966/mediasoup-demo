@@ -7,10 +7,10 @@ const colors = require('colors');
 const LOGS_DEBUG = process.env.LOGS_DEBUG ? process.env.LOGS_DEBUG === 'true' : true;
 const LOGS_COLORS = process.env.LOGS_COLORS ? process.env.LOGS_COLORS === 'true' : true;
 
-console.log('Logs', {
-    colors: LOGS_COLORS,
-    debug: LOGS_DEBUG,
-});
+// console.log('Logs', {
+//     colors: LOGS_COLORS,
+//     debug: LOGS_DEBUG,
+// });
 
 LOGS_COLORS ? colors.enable() : colors.disable();
 
@@ -38,16 +38,16 @@ module.exports = class Logs {
      * @returns
      */
     debug(msg, op = '') {
-        if (this.debugOn) {
-            this.timeEnd = Date.now();
-            this.timeElapsedMs = this.getFormatTime(Math.floor(this.timeEnd - this.timeStart));
-            console.debug(
-                '[' + this.getDateTime() + '] [' + this.appName + '] ' + msg,
-                util.inspect(op, options),
-                this.timeElapsedMs,
-            );
-            this.timeStart = Date.now();
-        }
+        // if (this.debugOn) {
+        //     this.timeEnd = Date.now();
+        //     this.timeElapsedMs = this.getFormatTime(Math.floor(this.timeEnd - this.timeStart));
+        //     console.debug(
+        //         '[' + this.getDateTime() + '] [' + this.appName + '] ' + msg,
+        //         util.inspect(op, options),
+        //         this.timeElapsedMs,
+        //     );
+        //     this.timeStart = Date.now();
+        // }
     }
 
     /**
@@ -57,7 +57,7 @@ module.exports = class Logs {
      * @returns
      */
     log(msg, op = '') {
-        console.log('[' + this.getDateTime() + '] [' + this.appName + '] ' + msg, util.inspect(op, options));
+        // console.log('[' + this.getDateTime() + '] [' + this.appName + '] ' + msg, util.inspect(op, options));
     }
 
     /**
@@ -67,10 +67,10 @@ module.exports = class Logs {
      * @returns
      */
     info(msg, op = '') {
-        console.info(
-            '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.green(msg),
-            util.inspect(op, options),
-        );
+        // console.info(
+        //     '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.green(msg),
+        //     util.inspect(op, options),
+        // );
     }
 
     /**
@@ -80,10 +80,10 @@ module.exports = class Logs {
      * @returns
      */
     warn(msg, op = '') {
-        console.info(
-            '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.yellow(msg),
-            util.inspect(op, options),
-        );
+        // console.info(
+        //     '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.yellow(msg),
+        //     util.inspect(op, options),
+        // );
     }
 
     /**
@@ -93,10 +93,10 @@ module.exports = class Logs {
      * @returns
      */
     error(msg, op = '') {
-        console.info(
-            '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.red(msg),
-            util.inspect(op, options),
-        );
+        // console.info(
+        //     '[' + this.getDateTime() + '] [' + this.appName + '] ' + colors.red(msg),
+        //     util.inspect(op, options),
+        // );
     }
 
     /**
