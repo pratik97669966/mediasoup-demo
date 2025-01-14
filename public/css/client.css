@@ -132,6 +132,20 @@ body {
 /*--------------------------------------------------------------
 # Loading...
 --------------------------------------------------------------*/
+#noteText {
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    /* Set text color to white */
+    background-color: transparent;
+    /* Make background transparent */
+    padding: 10px 0;
+    z-index: 1000;
+    /* Ensure it stays on top of other elements */
+}
 
 #loadingDiv {
     color: #fff;
@@ -141,14 +155,17 @@ body {
     background: rgba(0, 0, 0, 0.7);
     box-shadow: var(--box-shadow);
 }
+
 #loadingDiv h1 {
     font-size: 60px;
     font-family: 'Montserrat';
 }
+
 #loadingDiv img {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 #loadingDiv pre {
     padding: 5px;
     font-family: 'Montserrat';
@@ -187,12 +204,15 @@ body {
     .init-modal-size {
         width: auto !important;
     }
+
     .init-user {
         display: block;
     }
+
     .init-video-container {
         padding: 0px;
     }
+
     .init-modal-size {
         width: 480px !important;
     }
@@ -668,6 +688,7 @@ body {
 a {
     color: #fff;
 }
+
 a:hover {
     color: var(--hover-color);
     transition: all 0.3s ease-in-out;
@@ -962,6 +983,7 @@ button:hover {
         width: 80%;
         min-height: auto;
     }
+
     .mySettingsMain {
         flex-direction: column;
     }
@@ -1037,8 +1059,10 @@ button:hover {
 .inline-check-box {
     margin-bottom: 20px;
     display: inline-flex;
-    justify-content: center; /* Vertical centering */
-    align-items: center; /* Horizontal centering */
+    justify-content: center;
+    /* Vertical centering */
+    align-items: center;
+    /* Horizontal centering */
     text-align: left;
     color: white;
 }
@@ -1192,13 +1216,16 @@ button:hover {
     /* border-radius: 5px; */
     /* box-shadow: 0 0 0 1px #666; */
 }
+
 #mySettingsTable td,
 th {
     padding: 10px;
 }
+
 #mySettingsTable tr td {
     text-align: left;
 }
+
 #mySettingsTable tr:nth-child(even) {
     /* background-color: #2b2b2b; */
 }
@@ -1206,6 +1233,7 @@ th {
 .width-130 {
     width: 130px;
 }
+
 .width-180 {
     width: 160px;
 }
@@ -1239,10 +1267,12 @@ th {
         flex-direction: row;
         border-right: none !important;
     }
+
     .tabActions {
         width: 100%;
         border-radius: 10px;
     }
+
     .tabButtonText {
         display: none !important;
     }
@@ -1371,15 +1401,15 @@ th {
     transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: green;
 }
 
-input:focus + .slider {
+input:focus+.slider {
     box-shadow: 0 0 1px green;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     -webkit-transform: translateX(24px);
     -ms-transform: translateX(24px);
     transform: translateX(24px);
@@ -1465,6 +1495,7 @@ input:checked + .slider:before {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -1474,6 +1505,7 @@ input:checked + .slider:before {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -1483,6 +1515,7 @@ input:checked + .slider:before {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -1504,9 +1537,11 @@ input:checked + .slider:before {
     0% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.5;
     }
@@ -1516,9 +1551,11 @@ input:checked + .slider:before {
     0% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.5;
     }
@@ -1528,9 +1565,11 @@ input:checked + .slider:before {
     0% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.5;
     }
@@ -1729,7 +1768,8 @@ progress {
 }
 
 .speaking {
-    box-shadow: 0 0 1px 1px rgb(255 255 255 / 32%); /* lightblue */
+    box-shadow: 0 0 1px 1px rgb(255 255 255 / 32%);
+    /* lightblue */
 }
 
 /*--------------------------------------------------------------
@@ -1953,7 +1993,8 @@ hr {
 }
 
 .dropdown-menu-custom li button:hover {
-    background-color: var(--hover-bg); /* Use a default hover color if --hover-bg is not defined */
+    background-color: var(--hover-bg);
+    /* Use a default hover color if --hover-bg is not defined */
 }
 
 /* Styles for table cell with title (td) */

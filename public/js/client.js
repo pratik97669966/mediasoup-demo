@@ -1245,7 +1245,7 @@ function handleUnauthorized() {
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then(() => {
         // Login required to join room
-        openURL(`/login/?room=${roomId}`);
+        openURL(myRoomUrl);
     });
 }
 
@@ -1270,7 +1270,7 @@ function roomIsBusy() {
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then((result) => {
         if (result.isConfirmed) {
-            openURL('/');
+
         }
     });
 }
@@ -1577,12 +1577,12 @@ function userNameAlreadyInRoom() {
         title: 'Username',
         html: `The Username is already in use. <br/> Please try with another one`,
         showDenyButton: false,
-        confirmButtonText: `OK`,
+        showcConfirmButton: `OK`,
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then((result) => {
         if (result.isConfirmed) {
-            openURL('/');
+
         }
     });
 }
@@ -2836,9 +2836,9 @@ async function addChild(device, els) {
  * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
  */
 async function setupLocalVideoMedia() {
-    if (!useVideo || localVideoMediaStream) {
-        return;
-    }
+    // if (!useVideo || localVideoMediaStream) {
+    //     return;
+    // }
 
     console.log('Requesting access to video inputs');
 
@@ -2878,9 +2878,9 @@ async function setupLocalVideoMedia() {
  * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
  */
 async function setupLocalAudioMedia() {
-    if (!useAudio || localAudioMediaStream) {
-        return;
-    }
+    // if (!useAudio || localAudioMediaStream) {
+    //     return;
+    // }
 
     console.log('Requesting access to audio inputs');
 
@@ -2940,14 +2940,13 @@ function handleMediaError(mediaType, err) {
     // Print message to inform user
     const $html = `
         <ul style="text-align: left">
-            <li>Media type: ${mediaType}</li>
-            <li>Error name: ${err.name}</li>
-            <li>Error message: <p style="color: red">${errMessage}</p></li>
-            <li>Common: <a href="https://blog.addpipe.com/common-getusermedia-errors" target="_blank">getUserMedia errors</a></li>
+            <li>Camera and microphone permission denied.</li>
+            <li>Please accept permition for this site.</li>
+            <li>Retry after permition accept.</li>
         </ul>
     `;
 
-    msgHTML(null, images.forbidden, 'Access denied', $html, 'center', '/');
+    msgHTML(null, images.forbidden, 'Permission denied', $html, 'center', myRoomUrl);
 
     /*
         it immediately stops the execution of the current function and jumps to the nearest enclosing try...catch block or, 
@@ -7840,7 +7839,7 @@ function sanitizeHtml(input) {
 function isHtml(str) {
     let a = document.createElement('div');
     a.innerHTML = str;
-    for (let c = a.childNodes, i = c.length; i--; ) {
+    for (let c = a.childNodes, i = c.length; i--;) {
         if (c[i].nodeType == 1) return true;
     }
     return false;
@@ -7854,11 +7853,11 @@ function isHtml(str) {
 function isValidHttpURL(url) {
     const pattern = new RegExp(
         '^(https?:\\/\\/)?' + // protocol
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-            '(\\#[-a-z\\d_]*)?$',
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$',
         'i', // fragment locator
     );
     return pattern.test(url);
@@ -10854,6 +10853,7 @@ function msgHTML(icon, imageUrl, title, html, position = 'center', redirectURL =
         imageUrl: imageUrl,
         title: title,
         html: html,
+        confirmButtonText: 'Retry',
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then((result) => {

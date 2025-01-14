@@ -4,9 +4,9 @@
 <head>
     <!-- Title and Icon -->
 
-    <title id="clientTitle">MiroTalk WebRTC Video call, Chat Room & Screen Sharing.</title>
-    <link id="icon" rel="shortcut icon" href="../images/logo.svg" />
-    <link id="appleTouchIcon" rel="apple-touch-icon" href="../images/logo.svg" />
+    <title id="clientTitle">Q UP App Video Consultation</title>
+    <link id="icon" rel="shortcut icon" href="../images/logo.png" />
+    <link id="appleTouchIcon" rel="apple-touch-icon" href="../images/logo.png" />
 
     <!-- Meta Information -->
 
@@ -84,6 +84,7 @@ access to use this app.
     <!-- init user devices -->
 
     <div id="initUser" class="init-user hidden">
+
         <!-- <p>Please allow the camera & microphone access to use this app.</p> -->
         <div id="initVideoContainer" class="init-video-container">
             <video id="initVideo" playsinline="true" autoplay="" class="mirror" poster="../images/loader.gif"></video>
@@ -107,18 +108,18 @@ access to use this app.
     <!-- Start buttons bar https://fontawesome.com/icons?d=gallery -->
 
     <div id="buttonsBar" class="fadein">
-        <button id="shareRoomBtn" class="fas fa-share-alt"style="display: none;"></button>
-        <button id="hideMeBtn" class="fas fa-user"style="display: none;"></button>
-        <button id="recordStreamBtn" class="fas fa-record-vinyl"style="display: none;"></button>
-        <button id="fullScreenBtn" class="fas fa-expand-alt"style="display: none;"></button>
-        <button id="captionBtn" class="fas fa-closed-captioning"style="display: none;"></button>
-        <button id="roomEmojiPickerBtn" class="fas fa-face-smile"style="display: none;"></button>
-        <button id="whiteboardBtn" class="fas fa-chalkboard-teacher"style="display: none;"></button>
-        <button id="snapshotRoomBtn" class="fas fas fa-camera-retro"style="display: none;"></button>
-        <button id="fileShareBtn" class="fas fa-folder-open"style="display: none;"></button>
-        <button id="documentPiPBtn" class="fas fa-images"style="display: none;"></button>
-        <button id="mySettingsBtn" class="fas fa-cogs"style="display: none;"></button>
-        <button id="aboutBtn" class="fas fa-question"style="display: none;"></button>
+        <button id="shareRoomBtn" class="fas fa-share-alt" style="display: none;"></button>
+        <button id="hideMeBtn" class="fas fa-user" style="display: none;"></button>
+        <button id="recordStreamBtn" class="fas fa-record-vinyl" style="display: none;"></button>
+        <button id="fullScreenBtn" class="fas fa-expand-alt" style="display: none;"></button>
+        <button id="captionBtn" class="fas fa-closed-captioning" style="display: none;"></button>
+        <button id="roomEmojiPickerBtn" class="fas fa-face-smile" style="display: none;"></button>
+        <button id="whiteboardBtn" class="fas fa-chalkboard-teacher" style="display: none;"></button>
+        <button id="snapshotRoomBtn" class="fas fas fa-camera-retro" style="display: none;"></button>
+        <button id="fileShareBtn" class="fas fa-folder-open" style="display: none;"></button>
+        <button id="documentPiPBtn" class="fas fa-images" style="display: none;"></button>
+        <button id="mySettingsBtn" class="fas fa-cogs" style="display: none;"></button>
+        <button id="aboutBtn" class="fas fa-question" style="display: none;"></button>
     </div>
     <!-- End left buttons -->
 
@@ -131,10 +132,11 @@ access to use this app.
         <button id="screenShareBtn" class="fas fa-desktop" style="display: none;"></button>
         <button id="myHandBtn" class="fas fa-hand-paper" style="display: none;"></button>
         <!-- <button id="chatRoomBtn" class="fas fa-comment" style="display: none;"></button> -->
-        <button id="leaveRoomBtn" class="fa-solid fa-phone-slash"style="display: none;"></button>
-    </div>
+        <button id="leaveRoomBtn" class="fa-solid fa-phone-slash" style="display: none;"></button>
 
+    </div>
     <!-- End bottom buttons -->
+    <div id="noteText">Note - reload page if opponent not visible or audible.</div>
 
     <!-- Start room emoji picker -->
 
