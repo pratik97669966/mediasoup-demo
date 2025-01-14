@@ -917,9 +917,9 @@ function getServerConfig(tunnel = false) {
         // Ngrok Configuration
         ngrok: ngrokEnabled
             ? {
-                enabled: ngrokEnabled,
-                token: ngrokAuthToken,
-            }
+                  enabled: ngrokEnabled,
+                  token: ngrokAuthToken,
+              }
             : false,
 
         // URLs for Redirection and Survey
@@ -954,7 +954,6 @@ async function ngrokStart() {
  * Start Local Server with ngrok https tunnel (optional)
  */
 server.listen(port, null, () => {
-    console.log('Logs', 'Server started on port', port);
     log.debug(
         `%c
 
@@ -1771,11 +1770,11 @@ function isValidFileName(fileName) {
 function isValidHttpURL(url) {
     const pattern = new RegExp(
         '^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$',
         'i', // fragment locator
     );
     return pattern.test(url);
