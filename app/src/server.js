@@ -18,7 +18,7 @@ const app = express();
 const fs = require('fs');
 const checkXSS = require('./xss.js');
 const ServerApi = require('./api');
-const mattermostCli = require('./mattermost.js');
+// const mattermostCli = require('./mattermost.js');
 const Host = require('./host');
 const Logs = require('./logs');
 const log = new Logs('server');
@@ -363,7 +363,6 @@ app.use((req, res, next) => {
 });
 
 // Mattermost
-const mattermost = new mattermostCli(app, mattermostCfg);
 
 // POST start from here...
 app.post('*', function (next) {
