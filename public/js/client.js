@@ -10,8 +10,8 @@ const signalingServer = getSignalingServer();
 const myRoomId = getId('myRoomId');
 const roomId = getRoomId();
 const qs = new URLSearchParams(window.location.search);
-const name = filterXSS(qs.get('userName'));
-const myRoomUrl = window.location.origin + '/join/' + roomId + "?userName=" + name; // share room url
+const nameData = filterXSS(qs.get('userName'));
+const myRoomUrl = window.location.origin + '/join/' + roomId + "?userName=" + nameData;
 
 // Images
 const images = {
@@ -2945,8 +2945,8 @@ function handleMediaError(mediaType, err) {
     const $html = `
         <ul style="text-align: left">
             <li>Camera and microphone permission denied.</li>
-            <li>Please accept permition for this site.</li>
-            <li>Retry after permition accept.</li>
+            <li>Please accept permission for this site.</li>
+            <li>Retry after permission accept.</li>
         </ul>
     `;
 
