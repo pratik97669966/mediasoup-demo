@@ -11,7 +11,7 @@ const myRoomId = getId('myRoomId');
 const roomId = getRoomId();
 const qs = new URLSearchParams(window.location.search);
 const nameData = filterXSS(qs.get('userName'));
-const myRoomUrl = window.location.origin + '/join/' + roomId + "?userName=" + nameData;
+const myRoomUrl = window.location.origin + '/join/' + roomId + "?userName=" + nameData; // share room url
 
 // Images
 const images = {
@@ -10850,33 +10850,15 @@ function msgHTML(icon, imageUrl, title, html, position = 'center', redirectURL =
         background: swBg,
         position: position,
         html: html,
-        showConfirmButton: false, // Hide the confirm button
+        confirmButtonText: 'Retry',
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
-        didOpen: () => {
-            document.getElementById('retryImage').addEventListener('click', function () {
-                // Retry logic here
-                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-                    .then((stream) => {
-                        console.log('Permission granted');
-                        // Close the Swal dialog if needed
-                        Swal.close();
-                    })
-                    .catch((error) => {
-                        console.error('Permission denied:', error);
-                        alert('Please enable camera and microphone permissions in your browser settings.');
-                    });
-            });
+    }).then((result) => {
+        if (result.isConfirmed && redirectURL) {
+            openURL(redirectURL);
         }
     });
 }
-
-// Example usage
-const $html = `
-    <img id="retryImage" src="../images/permission.png" alt="Retry" style="cursor: pointer; margin-top: 10px; width: -webkit-fill-available;">
-`;
-
-msgHTML(null, images.forbidden, 'Permission denied', $html, 'center', myRoomUrl);
 
 /**
  * Message popup
