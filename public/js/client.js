@@ -9,7 +9,9 @@ const signalingServer = getSignalingServer();
 // This room
 const myRoomId = getId('myRoomId');
 const roomId = getRoomId();
-const myRoomUrl = window.location.origin + '/join/' + roomId; // share room url
+const qs = new URLSearchParams(window.location.search);
+const name = filterXSS(qs.get('userName'));
+const myRoomUrl = window.location.origin + '/join/' + roomId + "?userName=" + name; // share room url
 
 // Images
 const images = {
@@ -424,7 +426,7 @@ const speechRecognitionStop = getId('speechRecognitionStop');
 // Media
 const sinkId = 'sinkId' in HTMLMediaElement.prototype;
 
-document.getElementById('refreshButton').addEventListener('click', function() {
+document.getElementById('refreshButton').addEventListener('click', function () {
     window.location.href = myRoomUrl;
 });
 
