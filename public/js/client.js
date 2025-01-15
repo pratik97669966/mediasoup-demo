@@ -10899,7 +10899,11 @@ async function playSound(name, force = false) {
  * @param {boolean} blank if true opne url in the new tab
  */
 function openURL(url, blank = false) {
-    blank ? window.open(url, '_blank') : (window.location.href = url);
+    if (blank) {
+        window.open(url, '_blank');
+    } else {
+        window.location.replace(url);
+    }
 }
 
 /**
