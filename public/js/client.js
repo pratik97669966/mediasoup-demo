@@ -805,7 +805,7 @@ function refreshMainButtonsToolTipPlacement() {
     setTippy(screenShareBtn, 'Start screen sharing', bottomButtonsPlacement);
     setTippy(myHandBtn, 'Raise your hand', bottomButtonsPlacement);
     // setTippy(chatRoomBtn, 'Open the chat', bottomButtonsPlacement);
-    // setTippy(leaveRoomBtn, 'Leave this room', bottomButtonsPlacement);
+    setTippy(leaveRoomBtn, 'Leave this room', bottomButtonsPlacement);
 }
 
 /**
@@ -1974,11 +1974,7 @@ async function handleAddPeer(config) {
             peer_name: peer_name,
         });
     }
-
     await loadRemoteMediaStream(new MediaStream(), peers, peer_id, 'video');
-    await wbUpdate();
-    await wbUpdate();
-    await wbUpdate();
     playSound('addPeer');
 }
 
@@ -4397,7 +4393,7 @@ function manageButtons() {
     setSwapCameraBtn();
     setHideMeButton();
     setMyHandBtn();
-    // setLeaveRoomBtn();
+    setLeaveRoomBtn();
 }
 
 /**
@@ -10534,12 +10530,7 @@ function showAbout() {
  * Leave the Room and create a new one
  */
 function leaveRoom() {
-    checkRecording();
-    if (surveyActive) {
-        leaveFeedback();
-    } else {
-        redirectOnLeave();
-    }
+    redirectOnLeave();
 }
 
 /**
