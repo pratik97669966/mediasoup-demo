@@ -2943,11 +2943,7 @@ function handleMediaError(mediaType, err) {
 
     // Print message to inform user
     const $html = `
-        <ul style="text-align: left">
-            <li>Camera and microphone permission denied.</li>
-            <li>Please accept permission for this site.</li>
-            <li>Retry after permission accept.</li>
-        </ul>
+           <img id="retryImage" src="../images/permission.png" alt="Retry" style="cursor: pointer; margin-top: 10px; width: -webkit-fill-available; ">
     `;
 
     msgHTML(null, images.forbidden, 'Permission denied', $html, 'center', myRoomUrl);
@@ -10853,19 +10849,34 @@ function msgHTML(icon, imageUrl, title, html, position = 'center', redirectURL =
         allowEscapeKey: false,
         background: swBg,
         position: position,
-        icon: icon,
-        imageUrl: imageUrl,
-        title: title,
         html: html,
-        confirmButtonText: 'Retry',
+        showConfirmButton: false, // Hide the confirm button
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
-    }).then((result) => {
-        if (result.isConfirmed && redirectURL) {
-            openURL(redirectURL);
+        didOpen: () => {
+            document.getElementById('retryImage').addEventListener('click', function () {
+                // Retry logic here
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                    .then((stream) => {
+                        console.log('Permission granted');
+                        // Close the Swal dialog if needed
+                        Swal.close();
+                    })
+                    .catch((error) => {
+                        console.error('Permission denied:', error);
+                        alert('Please enable camera and microphone permissions in your browser settings.');
+                    });
+            });
         }
     });
 }
+
+// Example usage
+const $html = `
+    <img id="retryImage" src="../images/permission.png" alt="Retry" style="cursor: pointer; margin-top: 10px; width: -webkit-fill-available;">
+`;
+
+msgHTML(null, images.forbidden, 'Permission denied', $html, 'center', myRoomUrl);
 
 /**
  * Message popup

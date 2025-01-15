@@ -6,7 +6,7 @@ const log = new Logs('NodeMailer');
 
 // Email config
 const emailCfg = {
-    alert: process.env.EMAIL_ALERT === 'true' || false,
+    alert: process.env.EMAIL_ALERT === 'false' || false,
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
     username: process.env.EMAIL_USERNAME,

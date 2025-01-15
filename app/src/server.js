@@ -496,11 +496,6 @@ app.get(['/icetest'], (req, res) => {
 app.get('/join/', async (req, res) => {
     if (Object.keys(req.query).length > 0) {
         log.debug('Request Query', req.query);
-        /* 
-            http://localhost:3000/join?room=test&name=mirotalk&audio=1&video=1&screen=0&notify=0&hide=0
-            https://p2p.mirotalk.com/join?room=test&name=mirotalk&audio=1&video=1&screen=0&notify=0&hide=0
-            https://mirotalk.up.railway.app/join?room=test&name=mirotalk&audio=1&video=1&screen=0&notify=0&hide=0
-        */
         const { room, name, audio, video, screen, notify, hide, token } = checkXSS(req.query);
 
         const allowRoomAccess = isAllowedRoomAccess('/join/params', req, hostCfg, peers, room);
@@ -1217,12 +1212,6 @@ io.sockets.on('connect', async (socket) => {
         };
 
         const activeRooms = getActiveRooms();
-
-        log.info('[Join] - active rooms and peers count', activeRooms);
-
-        log.info('[Join] - connected presenters grp by roomId', presenters);
-
-        log.info('[Join] - connected peers grp by roomId', peers);
 
         await addPeerTo(channel);
 
@@ -1941,20 +1930,6 @@ function isAllowedRoomAccess(logMessage, req, hostCfg, peers, roomId) {
         (hostUserAuthenticated && roomExist) || // User authenticated via Login and room Exist
         ((OIDCUserAuthenticated || hostUserAuthenticated) && roomCount === 0) || // User authenticated joins the first room
         roomExist; // User Or Guest join an existing Room
-
-    log.debug(logMessage, {
-        OIDCUserAuthenticated: OIDCUserAuthenticated,
-        hostUserAuthenticated: hostUserAuthenticated,
-        roomExist: roomExist,
-        roomCount: roomCount,
-        extraInfo: {
-            roomId: roomId,
-            OIDCUserEnabled: OIDC.enabled,
-            hostProtected: hostCfg.protected,
-            hostAuthenticated: hostCfg.authenticated,
-        },
-        allowRoomAccess: allowRoomAccess,
-    });
 
     return allowRoomAccess;
 }
