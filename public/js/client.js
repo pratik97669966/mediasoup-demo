@@ -1975,10 +1975,9 @@ async function handleAddPeer(config) {
         });
     }
 
-    if (!peer_video) {
-        await loadRemoteMediaStream(new MediaStream(), peers, peer_id, 'video');
-    }
-
+    await loadRemoteMediaStream(new MediaStream(), peers, peer_id, 'video');
+    await wbUpdate();
+    await wbUpdate();
     await wbUpdate();
     playSound('addPeer');
 }
