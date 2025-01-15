@@ -139,12 +139,30 @@ body {
     width: 100%;
     text-align: center;
     color: white;
-    /* Set text color to white */
     background-color: transparent;
-    /* Make background transparent */
     padding: 10px 0;
     z-index: 1000;
-    /* Ensure it stays on top of other elements */
+}
+
+#refreshButton {
+    margin-left: 10px;
+    padding: 5px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    /* Rounded corners */
+    background-color: #007bff;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+#refreshButton:hover {
+    background-color: #0056b3;
+    /* Darker background on hover */
 }
 
 #loadingDiv {

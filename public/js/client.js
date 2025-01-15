@@ -424,7 +424,9 @@ const speechRecognitionStop = getId('speechRecognitionStop');
 // Media
 const sinkId = 'sinkId' in HTMLMediaElement.prototype;
 
-//....
+document.getElementById('refreshButton').addEventListener('click', function() {
+    window.location.href = myRoomUrl;
+});
 
 const userLimits = {
     active: false, // Limit users per room

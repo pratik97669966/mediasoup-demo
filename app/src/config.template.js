@@ -4,21 +4,21 @@ module.exports = {
     // Branding and customizations require a license: https://codecanyon.net/item/mirotalk-p2p-webrtc-realtime-video-conferences/38376661
     brand: {
         app: {
-            name: 'MiroTalk',
-            title: 'MiroTalk<br />Free browser based Real-time video calls.<br />Simple, Secure, Fast.',
+            name: 'Q UP App Video Consultation',
+            title: 'Q UP App Video Consultation<br />Free browser based Real-time video calls.<br />Simple, Secure, Fast.',
             description:
                 'Start your next video call with a single click. No download, plug-in, or login is required. Just get straight to talking, messaging, and sharing your screen.',
         },
         site: {
-            landingTitle: 'MiroTalk a Free Secure Video Calls, Chat & Screen Sharing.',
-            newCallTitle: 'MiroTalk a Free Secure Video Calls, Chat & Screen Sharing.',
-            loginTitle: 'MiroTalk - Host Protected login required.',
-            clientTitle: 'MiroTalk WebRTC Video call, Chat Room & Screen Sharing.',
-            privacyPolicyTitle: 'MiroTalk - privacy and policy.',
+            landingTitle: 'Q UP App Video Consultation',
+            newCallTitle: 'Q UP App Video Consultation',
+            loginTitle: 'Q UP App Video Consultation',
+            clientTitle: 'Q UP App Video Consultation',
+            privacyPolicyTitle: 'Q UP App Video Consultation - privacy and policy.',
             stunTurnTitle: 'Test Stun/Turn Servers.',
-            notFoundTitle: 'MiroTalk - 404 Page not found.',
-            shortcutIcon: '../images/logo.svg',
-            appleTouchIcon: '../images/logo.svg',
+            notFoundTitle: 'Q UP App Video Consultation - 404 Page not found.',
+            shortcutIcon: '../images/logo.png',
+            appleTouchIcon: '../images/logo.png',
         },
         html: {
             features: true,
