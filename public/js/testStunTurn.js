@@ -15,16 +15,28 @@ if (iceServers) {
 } else {
     // http://localhost:3000/icetest
     iceServers = [
-        // Test some STUN server
         {
-            urls: 'stun:stun.l.google.com:19302',
+            urls: "stun:stun.relay.metered.ca:80",
         },
-        // Test some TURN server
-        // https://www.metered.ca/tools/openrelay/
         {
-            urls: 'turn:a.relay.metered.ca:443',
-            username: 'e8dd65b92c62d3e36cafb807',
-            credential: 'uWdWNmkhvyqTEswO',
+            urls: "turn:global.relay.metered.ca:80",
+            username: "f1025813fc14cb6734d20891",
+            credential: "qrpq0LEqpQekKwOx",
+        },
+        {
+            urls: "turn:global.relay.metered.ca:80?transport=tcp",
+            username: "f1025813fc14cb6734d20891",
+            credential: "qrpq0LEqpQekKwOx",
+        },
+        {
+            urls: "turn:global.relay.metered.ca:443",
+            username: "f1025813fc14cb6734d20891",
+            credential: "qrpq0LEqpQekKwOx",
+        },
+        {
+            urls: "turns:global.relay.metered.ca:443?transport=tcp",
+            username: "f1025813fc14cb6734d20891",
+            credential: "qrpq0LEqpQekKwOx",
         },
     ];
 }
