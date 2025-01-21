@@ -19,24 +19,9 @@ if (iceServers) {
             urls: "stun:stun.relay.metered.ca:80",
         },
         {
-            urls: "turn:global.relay.metered.ca:80",
-            username: "f1025813fc14cb6734d20891",
-            credential: "qrpq0LEqpQekKwOx",
-        },
-        {
-            urls: "turn:global.relay.metered.ca:80?transport=tcp",
-            username: "f1025813fc14cb6734d20891",
-            credential: "qrpq0LEqpQekKwOx",
-        },
-        {
-            urls: "turn:global.relay.metered.ca:443",
-            username: "f1025813fc14cb6734d20891",
-            credential: "qrpq0LEqpQekKwOx",
-        },
-        {
-            urls: "turns:global.relay.metered.ca:443?transport=tcp",
-            username: "f1025813fc14cb6734d20891",
-            credential: "qrpq0LEqpQekKwOx",
+            url: "turn:relay1.expressturn.com:3478",
+            username: "efI4Q5MYZO7VXCJ3YE",
+            credential: "T49IL6MtSCYsiSCB",
         },
     ];
 }
