@@ -15,11 +15,9 @@ if (iceServers) {
 } else {
     // http://localhost:3000/icetest
     iceServers = [
+        { urls: 'stun:relay1.expressturn.com:3478' },
         {
-            urls: "stun:stun.relay.metered.ca:80",
-        },
-        {
-            url: "turn:relay1.expressturn.com:3478",
+            url: "turn:relay1.expressturn.com:3478?transport=udp",
             username: "efI4Q5MYZO7VXCJ3YE",
             credential: "T49IL6MtSCYsiSCB",
         },
